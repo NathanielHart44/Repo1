@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+from sys import exit
 root = Tk()
 
 k = 0
@@ -15,6 +16,7 @@ menu = Menu(root)
 item = Menu(menu)
 item.add_command(label="Menu Thing")
 menu.add_cascade(label="File", menu=item)
+menu.add_cascade(label="Stuff", menu=item)
 root.config(menu=menu)
 
 #: adding a label to the root window
@@ -52,5 +54,12 @@ def countdown():
 
 new_button = Checkbutton(root, text = "1st", command=countdown)
 new_button.grid(column=4, row=3)
+
+
+def leave():
+    exit()
+
+leave_button = Button(root, text = "Click me and you're done!", command=leave)
+leave_button.grid(column=5, row=5)
 
 root.mainloop()
