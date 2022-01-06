@@ -24,30 +24,43 @@ first_frame.grid(row=0, column=0)
 def get_new_amt():
     global pl_money
     global turn_count
-    turn_count += 1
+    total_turns = 3
 
-    def delete_old_info():
-        if turn_count > 0:
-            pass # TODO: delete the old "answer.grid"
-
-    if turn_count > 1:
+    if turn_count >= 1:
         get_randoms()
+        print(f"value_mod is: {value_mod} and market_value is: {market_value}. Generated from get_new_amt.")
+    else:
+        print("problem 1")
 
     if pl_money <= 0:
         answer = Label(first_frame, text=f"You've lost all your money. You lose.")
-    elif turn_count >= 4:
+    elif turn_count >= total_turns:
         answer = Label(first_frame, text=f"You finished the game with ${pl_money}.")
-    elif turn_count < 4:
+    elif turn_count < total_turns:
         amt_invested = int(number_box.get())
         new_amt = amt_invested + (amt_invested * (market_value * 0.1))
         pl_money -= amt_invested
         pl_money += new_amt
         if pl_money < 0:
             pl_money = 0
-        answer = Label(first_frame, text=f"After turn {turn_count}, you have ${pl_money} left.")
+        answer = Label(first_frame, text=f"After turn {turn_count + 1}, you have ${pl_money} left.")
+    else:
+        print("problem 2")
 
-    delete_old_info()
+    turn_count += 1
     answer.grid()
+
+    #: row_info = int(answer.grid_info()["row"])
+    if turn_count >= 2:
+        for answer in first_frame.grid_slaves():
+            print(int(answer.grid_info()["row"]))
+            if int(answer.grid_info()["row"]) > 2:
+                answer.grid_remove()
+        answer.grid()
+        print(f"turn_count is: {turn_count}")
+    elif turn_count < 2:
+        print(f"turn_count is: {turn_count}. This is the first turn.")
+
 
 main_message = f"You have ${pl_money}. How much would you like to invest?"
 enter_number_label = Label(first_frame, text=main_message)
@@ -69,6 +82,7 @@ def outlook_gen():
     global market_value
     if turn_count == 0:
         get_randoms()
+        print(f"value_mod is: {value_mod} and market_value is: {market_value}. Generated from outlook_gen.")
     hidden_value = value_mod + market_value
     if hidden_value >= 65:
         return "great"
