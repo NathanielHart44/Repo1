@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 win = Tk()
 
@@ -40,5 +41,7 @@ number_box.grid()
 
 number_button = Button(win, text="Enter the number", command=get_number)
 number_button.grid()
+
+messagebox.showinfo("Hello", "You're great!")
 
 win.mainloop()
