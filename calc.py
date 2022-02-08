@@ -39,7 +39,6 @@ def combine_numbers():
         new_num = int(first_num / second_num)
     inputs.insert(0, new_num)
 
-
 button_0 = Button(root, text="0", padx=10, pady=20, command=lambda: button_click(0))
 button_1 = Button(root, text="1", padx=10, pady=20, command=lambda: button_click(1))
 button_2 = Button(root, text="2", padx=10, pady=20, command=lambda: button_click(2))
@@ -69,8 +68,7 @@ button_7.grid(row=3, column=0)
 button_8.grid(row=3, column=1)
 button_9.grid(row=3, column=2)
 
-button_0.grid(row=4, column=0)
-button_clear.grid(row=4, column=1)
+button_0.grid(row=4, column=1)
 button_equals.grid(row=4, column=2)
 
 button_adds.grid(row=5, column=0)
@@ -78,5 +76,6 @@ button_subtracts.grid(row=5, column=1)
 
 button_multiplies.grid(row=6, column=0)
 button_divides.grid(row=6, column=1)
+button_clear.grid(row=6, column=2)
 
 root.mainloop()

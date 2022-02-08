@@ -55,7 +55,7 @@ def return_outlook():
     global value_mod
     global market_value
     hidden_value = value_mod + market_value
-    print(f"value_mod is: {value_mod} and market_value is: {market_value}.")
+    #: print(f"value_mod is: {value_mod} and market_value is: {market_value}.")
     if hidden_value >= 75 or hidden_value <= -75:
         return  "extreme volatility"
     elif hidden_value <= 75 and hidden_value >= 45:
@@ -72,7 +72,7 @@ def return_outlook():
 def set_outlook():
     global turn_count
     global total_turns
-    print(f"The turn_count is: {turn_count}")
+    #: print(f"The turn_count is: {turn_count}")
     if turn_count == 0:
         return
     elif turn_count < total_turns:
