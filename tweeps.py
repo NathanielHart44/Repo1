@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 import yagmail
 
 yag = yagmail.SMTP('nftynate@gmail.com', oauth2_file='~/oauth2_creds.json')
-client = tweepy.Client("AAAAAAAAAAAAAAAAAAAAAIWLaAEAAAAAxosFUwymx9RXMG9QxImF1O%2FhVxw%3D1dwv0vKAkS8BFSDcxdg293USBU63zJmWGOUl9DFb7Rb9b7NY1k", wait_on_rate_limit=True)
+client = tweepy.Client(os.getenv('TWEEPY_BEARER_TOKEN'), wait_on_rate_limit=True)
 
 start_day = (datetime.now(timezone.utc) - timedelta(days=1))
 words = ['Jazz', 'Utah', 'Clarkson']
